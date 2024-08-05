@@ -1,8 +1,10 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<time.h>
+//
+// Created by longbin on 24-7-24.
+//
+#include<cstdio>
+#include<cstdlib>
+#include<ctime>
 #include<string.h>
-#include<stdbool.h>
 #define swap(a,b){\
   __typeof(a) __c=a;\
   a=b;\
@@ -22,7 +24,7 @@ typedef struct HashTable{
 Node*getNewNode(const char*x){
     Node*p=(Node*)malloc(sizeof(Node));
     p->s=strdup(x);
-    p->next=NULL;
+    p->next = nullptr;
     return p;
 }
 
@@ -58,13 +60,13 @@ bool insert(HashTable*h,const char*s){
     return true;
 }
 void clearnode(Node*p){
-    if(p==NULL)return;
+    if(p == nullptr)return;
     if(p->s)free(p->s);
-    free(p);return ;
+    free(p);
 }
 
 void clearHashTable(HashTable*s){
-    if(s==NULL)return;
+    if(s == nullptr)return;
     for(int i=0;i<s->size;i++){
         Node*p=s->data[i].next,*q;
         while(p){
@@ -80,7 +82,6 @@ void swap_hashtable(HashTable* ne,HashTable*h){
     swap(ne->data,h->data);
     swap(ne->cnt,h->cnt);
     swap(ne->size,h->size);
-    return;
 }
  
 void expand(HashTable*h){
@@ -95,7 +96,6 @@ void expand(HashTable*h){
     }
     swap_hashtable(ne,h);
     clearHashTable(ne);
-    return ;
 }
 
 
@@ -124,7 +124,7 @@ void   output(HashTable*h){
 }
 
 int main(){
-    srand(time(0));
+    srand(time(nullptr));
     char s[100];
     #define MAX_N 2
     HashTable*h=getnewhash(MAX_N);
